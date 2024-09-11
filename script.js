@@ -95,9 +95,11 @@ function parseLyrics(lyrics) {
 function updateLyrics(currentTime) {
     const lyricsElement = document.getElementById('lyrics');
     const currentLyrics = lyricsArray.filter(lyric => lyric.time <= currentTime).pop();
-    
+
     if (currentLyrics) {
         lyricsElement.innerHTML = `<p>${currentLyrics.text}</p>`;
+    } else {
+        lyricsElement.innerHTML = `<p>No lyrics available</p>`;
     }
 }
 
