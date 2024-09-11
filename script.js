@@ -31,7 +31,7 @@ musicControl.addEventListener('click', function() {
     }
 });
 // 歌词数据（LRC格式）
-const lyricsText =  
+const lyricsText = `
 [00:36.98] 伍岚正和程艾影
 [00:46.07] 从上海到武汉
 [00:49.82] 他们要坐十天马车
@@ -68,7 +68,7 @@ const lyricsText =
 [04:16.86] 唯有遗忘是最漫长
 [04:20.76] 这是一条必经的路
 [04:24.80] 没有指引出口的光
-;
+`;
 
 // 解析歌词并返回带时间戳和歌词内容的数组
 function parseLyrics(lyrics) {
@@ -94,7 +94,7 @@ function parseLyrics(lyrics) {
 // 更新显示歌词
 function updateLyrics(currentTime) {
     const lyricsElement = document.getElementById('lyrics');
-    const currentLyrics = lyricsArray.find(lyric => lyric.time >= currentTime);
+    const currentLyrics = lyricsArray.filter(lyric => lyric.time <= currentTime).pop();
     
     if (currentLyrics) {
         lyricsElement.innerHTML = `<p>${currentLyrics.text}</p>`;
